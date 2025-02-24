@@ -43,11 +43,10 @@ function animateSplitText(selector, delayIncrement = 50) {
     span.textContent = char;
     span.style.display = 'inline-block';
     span.style.opacity = 0;
-    // Manejo de espacio
     if (char === ' ') {
       span.style.width = '0.5em';
     }
-    // Animación
+    // fadeInUp
     span.style.animation = 'fadeInUp 0.6s forwards';
     span.style.animationDelay = `${i * delayIncrement}ms`;
     element.appendChild(span);
@@ -56,48 +55,55 @@ function animateSplitText(selector, delayIncrement = 50) {
 
 /*********************************
  * Animación “Blur Text” (palabra x palabra)
- * Conservando el color en "Eclipse," si existe
+ * Respetando el span de "Eclipse,"
  *********************************/
 function animateBlurText(selector, delayIncrement = 100) {
   const element = document.querySelector(selector);
   if (!element) return;
 
-  // Obtenemos el texto original (incluye el <span> si está)
-  // Reemplazamos <span> por un marcador temporal para no perderlo
+  // Reemplazamos temporalmente el span
   let originalHTML = element.innerHTML;
-  // Ejemplo: "Bienvenidos a <span class=\"logo-name\">Eclipse,</span> donde..."
-  // Reemplazamos el span por un token => (ECLIPSE_TOKEN)
-  originalHTML = originalHTML.replace(/<span.*?>(.*?)<\/span>/, 'ECLIPSE_TOKEN');
+  // Sustituimos <span class="logo-name">Eclipse,</span> por un token ECLIPSE_TOKEN
+  originalHTML = originalHTML.replace(
+    /<span class="logo-name">(.*?)<\/span>/,
+    'ECLIPSE_TOKEN'
+  );
 
   const words = originalHTML.trim().split(' ');
-  element.textContent = ''; // Limpiamos el contenido
+  element.textContent = '';
 
   words.forEach((word, index) => {
     const span = document.createElement('span');
-    // Si detectamos el token, volvemos a poner el span con la clase .logo-name
+
+    // Si el token está en la palabra, lo reponemos con el span original
     if (word.includes('ECLIPSE_TOKEN')) {
-      // Quitamos el token de la palabra y le devolvemos el texto "Eclipse,"
-      const replacedText = word.replace('ECLIPSE_TOKEN', 'Eclipse,');
-      span.innerHTML = `<span class="logo-name">${replacedText}</span> `;
+      span.innerHTML = `<span class="logo-name">Eclipse,</span>`;
     } else {
-      span.textContent = word + ' ';
+      span.textContent = word;
     }
+
     span.style.display = 'inline-block';
     span.style.opacity = 0;
-    // Animación blurIn
+    // blurIn
     span.style.animation = 'blurIn 0.8s forwards';
     span.style.animationDelay = `${index * delayIncrement}ms`;
 
     element.appendChild(span);
+
+    // Añadimos un espacio después de cada palabra
+    const space = document.createElement('span');
+    space.textContent = ' ';
+    element.appendChild(space);
   });
 }
 
 /*********************************
- * Lanzar animaciones al cargar la página
+ * Lanzar animaciones al cargar
  *********************************/
 window.addEventListener('load', () => {
-  // Solo se activan si existen esos elementos
+  // Blur en la frase 1
   animateBlurText('#frase-blur', 120);
+  // Split en la frase 2
   animateSplitText('#frase-split', 50);
 });
 

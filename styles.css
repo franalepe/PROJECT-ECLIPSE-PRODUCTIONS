@@ -1,11 +1,15 @@
+/* IMPORTAR FUENTE (Montserrat) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 /* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif; /* Fuente principal */
   background-color: #000; /* Fondo oscuro */
   color: #fff;
   line-height: 1.6;
@@ -36,13 +40,36 @@ nav ul {
 nav ul li {
   margin-left: 20px;
 }
-nav ul li a {
-  color: #fff;
+
+/* SHINY TEXT (para enlaces del menú) */
+.shiny-text {
+  position: relative;
+  color: #b5b5b5;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text; /* Safari/Chrome */
   text-decoration: none;
+  animation: shine 4s linear infinite;
   transition: color 0.3s;
 }
-nav ul li a:hover {
-  color: #8a2be2;
+@keyframes shine {
+  0% { background-position: 100%; }
+  100% { background-position: -100%; }
+}
+.shiny-text:hover {
+  color: #8a2be2; /* Morado al hover */
+  animation-play-state: paused; /* Pausa el brillo al hover */
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 5px;
 }
 
 /* Fondo animado: estrellas */
@@ -70,7 +97,7 @@ nav ul li a:hover {
   50% { opacity: 0.2; }
 }
 
-/* Elemento Eclipse móvil */
+/* Eclipse móvil */
 #eclipse {
   position: absolute;
   top: 10%;
@@ -84,7 +111,7 @@ nav ul li a:hover {
   z-index: 0;
 }
 
-/* Sección de Bienvenida (Index) */
+/* Sección de Bienvenida */
 #inicio {
   padding-top: 120px;
   min-height: 100vh;
@@ -96,7 +123,7 @@ nav ul li a:hover {
   z-index: 1;
 }
 #inicio .content {
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   margin: auto;
 }
@@ -105,7 +132,7 @@ nav ul li a:hover {
   margin-bottom: 20px;
 }
 #inicio .content h2 {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin-bottom: 30px;
 }
 .logo-name {
@@ -136,6 +163,19 @@ nav ul li a:hover {
 /* Secciones genéricas */
 section {
   padding: 100px 20px;
+}
+
+/* FuzzyText (párrafo con efecto “temblor”/desenfoque) */
+.fuzzy-text {
+  display: inline-block;
+  animation: fuzz 1.5s infinite;
+}
+@keyframes fuzz {
+  0% { filter: blur(0px); }
+  25% { filter: blur(1px); }
+  50% { filter: blur(0px); }
+  75% { filter: blur(2px); }
+  100% { filter: blur(0px); }
 }
 
 /* PRODUCCIÓN: Scroll horizontal infinito */
@@ -181,7 +221,7 @@ section {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background: #8a2be2; /* Morado */
+  background: #8a2be2;
   color: #fff;
   font-size: 1.2em;
   cursor: pointer;
@@ -197,15 +237,11 @@ footer {
   padding: 20px;
   background: rgba(0, 0, 0, 0.9);
 }
-footer p {
+.follow-us {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2em;
   margin-bottom: 10px;
-}
-.ig-icon {
-  width: 35px;
-  height: 35px;
-  vertical-align: middle;
-  transition: transform 0.3s;
-  border-radius: 10px;
 }
 .ig-button {
   display: inline-block;
@@ -218,6 +254,13 @@ footer p {
 .ig-button:hover {
   background: #a64fff;
   transform: scale(1.1);
+}
+.ig-icon {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  transition: transform 0.3s;
+  border-radius: 10px;
 }
 .ig-button:hover .ig-icon {
   transform: rotate(15deg);
@@ -249,5 +292,33 @@ footer p {
     filter: blur(0px);
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE: Ajustes para móviles */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+  }
+  nav ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  nav ul li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  #inicio .content h1 {
+    font-size: 1.5em;
+  }
+  #inicio .content h2 {
+    font-size: 1.2em;
+  }
+  .section-title {
+    font-size: 1.5em;
+  }
+  .scroll-content img {
+    height: 80px;
+    width: 80px;
   }
 }

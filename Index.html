@@ -1,59 +1,62 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eclipse | Inicio</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- Fondo animado de estrellas -->
-  <div class="stars"></div>
-
-  <!-- Elemento Eclipse móvil (círculo que crece/disminuye con el scroll) -->
-  <div id="eclipse"></div>
-
-  <!-- Menú de navegación (enlaces a páginas separadas) -->
-  <header>
-    <div class="logo">
-      <img src="Eclipse logo.jpg" alt="Eclipse Logo" class="logo-img" />
-    </div>
-    <nav>
-      <ul>
-        <li><a href="nosotras.html">Nosotras</a></li>
-        <li><a href="podcast.html">Podcast</a></li>
-        <li><a href="produccion.html">Producción</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Sección de Bienvenida (Portada) -->
-  <section id="inicio">
-    <div class="content">
-      <!-- Frase 1 (arriba): Efecto “Blur Text” palabra x palabra -->
-      <h1 class="blur-text" id="frase-blur">
-        Bienvenidos a <span class="logo-name"> Eclipse, </span> donde transformamos la pasión en imágenes
-      </h1>
-
-      <!-- Frase 2 (abajo): Efecto “Split Text” letra x letra -->
-      <h2 class="split-text" id="frase-split">
-        En la unión de luz y sombra, nace tu visión
-      </h2>
-
-      <a href="nosotras.html" class="button">Explorar</a>
-    </div>
-  </section>
-
-  <!-- Footer con Instagram -->
-  <footer>
-    <p>Síguenos en:</p>
-    <a href="https://www.instagram.com/_eclipsee.productions/" target="_blank" class="ig-button">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" class="ig-icon" />
-    </a>
-  </footer>
-
-  <script src="scripts.js"></script>
-</body>
-</html>
+  <html lang="es">
+  <head>
+    <meta property="og:title" content="Eclipse">
+  <meta property="og:description" content="Productora audiovisual">
+  <meta property="og:image" content="https://drive.google.com/file/d/1I9RTG5BmDqZCNjMmThXENW4DNtOexgKK/view?usp=sharing">
+  <meta property="og:url" content="EclipseProductions.netlify.app">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Eclipse | Inicio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Fondo animado de estrellas -->
+    <div class="stars"></div>
+  
+    <!-- Elemento Eclipse móvil -->
+    <div id="eclipse"></div>
+  
+    <!-- Menú de navegación (con ShinyText en los enlaces) -->
+    <header>
+      <div class="logo">
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" class="logo-img" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="nosotras.html" class="shiny-text">Nosotras</a></li>
+          <li><a href="podcast.html" class="shiny-text">Podcast</a></li>
+          <li><a href="produccion.html" class="shiny-text">Producción</a></li>
+          <li><a href="blog.html" class="shiny-text">Blog</a></li>
+          <li><a href="contacto.html" class="shiny-text">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <!-- Sección de Bienvenida -->
+    <section id="inicio">
+      <div class="content">
+        <!-- Frase 1 (Blur Text) -->
+        <h1 class="blur-text" id="frase-blur">
+          Bienvenidos a <span class="logo-name">Eclipse</span> donde transformamos la pasión en imágenes
+        </h1>
+        <!-- Frase 2 (Split Text) -->
+        <h2 class="split-text" id="frase-split">
+          En la unión de luz y sombra, nace tu visión
+        </h2>
+        <a href="nosotras.html" class="button">Explorar</a>
+      </div>
+    </section>
+  
+    <!-- Footer con Instagram -->
+    <footer>
+      <p class="follow-us">Síguenos en:</p>
+      <a href="https://www.instagram.com/_eclipsee.productions/" target="_blank" class="ig-button">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" class="ig-icon" />
+      </a>
+    </footer>
+  
+    <script src="scripts.js"></script>
+  </body>
+  </html>
+  
