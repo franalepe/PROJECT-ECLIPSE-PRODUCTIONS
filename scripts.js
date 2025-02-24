@@ -98,6 +98,35 @@ function animateBlurText(selector, delayIncrement = 100) {
 }
 
 /*********************************
+ * Menú hamburguesa
+ *********************************/
+// Toggle para el menú hamburguesa
+const menuToggle = document.querySelector('.menu-toggle');
+const navbar = document.querySelector('.navbar');
+
+if (menuToggle && navbar) {
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+    menuToggle.classList.toggle('active');  // Agrega animación de cambio de color al icono del menú
+  });
+}
+
+/*********************************
+ * ShinyText
+ *********************************/
+function applyShinyText(selector, speed = 5) {
+  const elements = document.querySelectorAll(selector);
+  elements.forEach(element => {
+    element.style.backgroundSize = '200% 100%';
+    element.style.animation = `shine ${speed}s linear infinite`;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  applyShinyText('.shiny-text', 4);
+});
+
+/*********************************
  * Lanzar animaciones al cargar
  *********************************/
 window.addEventListener('load', () => {
@@ -107,3 +136,64 @@ window.addEventListener('load', () => {
   animateSplitText('#frase-split', 50);
 });
 
+function animateSplitText(selector, delayIncrement = 50) {
+  const element = document.querySelector(selector);
+  if (!element) return;
+
+  const text = element.textContent.trim();
+  element.textContent = '';
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const span = document.createElement('span');
+    span.textContent = char;
+    span.style.display = 'inline-block';
+    span.style.opacity = 0;
+    if (char === ' ') {
+      span.style.width = '0.5em';
+    }
+    span.style.animation = 'fadeInUp 0.6s forwards';
+    span.style.animationDelay = `${i * delayIncrement}ms`;
+    element.appendChild(span);
+  }
+}
+
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('touch');
+  });
+});
+
+/*********************************
+ * Enviar mensajes por Telegram
+ *********************************/
+// Variables para CallMeBot
+const callMeBotUser = "BustillosFrank";
+
+// Función para enviar mensajes por Telegram
+function enviarMensajeTelegram(mensaje) {
+  const url = `http://api.callmebot.com/text.php?user=${callMeBotUser}&text=${encodeURIComponent(mensaje)}`;
+  fetch(url)
+    .then(response => console.log("Mensaje enviado:", mensaje))
+    .catch(error => console.error("Error enviando mensaje:", error));
+}
+
+// Configurar el envío del formulario de contacto
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const nombre = contactForm.querySelector('input[placeholder="Nombre"]').value;
+      const email = contactForm.querySelector('input[placeholder="Email"]').value;
+      const mensaje = contactForm.querySelector('textarea[placeholder="Mensaje"]').value;
+
+      const mensajeTelegram = `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`;
+      enviarMensajeTelegram(mensajeTelegram);
+
+      // Limpiar el formulario después de enviar
+      contactForm.reset();
+      alert("Mensaje enviado con éxito.");
+    });
+  }
+});

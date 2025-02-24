@@ -41,7 +41,7 @@ nav ul li {
   margin-left: 20px;
 }
 
-/* SHINY TEXT (para enlaces del menú) */
+/* SHINY TEXT (para enlaces del menú y botón de explorar) */
 .shiny-text {
   position: relative;
   color: #b5b5b5;
@@ -65,6 +65,22 @@ nav ul li {
 .shiny-text:hover {
   color: #8a2be2; /* Morado al hover */
   animation-play-state: paused; /* Pausa el brillo al hover */
+}
+
+/* Botón con ShinyText */
+.button.shiny-text {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: transparent;
+  color: #8a2be2;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+.button.shiny-text:hover {
+  background: #8a2be2;
+  color: #fff;
 }
 
 nav ul li a {
@@ -97,19 +113,34 @@ nav ul li a {
   50% { opacity: 0.2; }
 }
 
-/* Eclipse móvil */
+/* Luna estilizada */
 #eclipse {
   position: absolute;
   top: 10%;
   right: 10%;
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff, #8a2be2);
+  border-radius: 50%; /* Hace que sea redonda */
+  background: radial-gradient(circle, #fff 40%, #8a2be2 60%, #6a3d9a 100%);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3);
   opacity: 0.8;
   transition: all 0.3s ease;
   z-index: 0;
 }
+
+/* Sombra de cráter */
+#eclipse:before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
 
 /* Sección de Bienvenida */
 #inicio {
@@ -330,14 +361,16 @@ footer {
   top: 20px;
   right: 20px;
   background: #8a2be2;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   z-index: 1001;
+  border-radius: 5px; /* Redondeado para que se vea bonito */
+  padding: 5px;
 }
 
 .menu-toggle div {
@@ -360,26 +393,28 @@ footer {
   margin-left: 20px;
 }
 
+/* Estilos para el menú en móviles */
 @media (max-width: 768px) {
-  /* Menú hamburguesa solo se muestra en móvil */
   .menu-toggle {
-    display: flex;
+    display: flex; /* Solo visible en móviles */
   }
 
   .navbar {
-    display: none;
+    display: none; /* Menú oculto por defecto */
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 70px;
     right: 20px;
     background: rgba(0, 0, 0, 0.8);
     width: 200px;
     padding: 20px;
     border-radius: 8px;
+    transition: all 0.3s ease-in-out; /* Transición suave */
   }
 
   .navbar.active {
-    display: flex; /* Aparece el menú cuando está activo */
+    display: flex; /* Menú visible cuando está activo */
+    animation: menuSlideIn 0.5s ease-in-out; /* Animación */
   }
 
   .navbar ul {
@@ -392,28 +427,133 @@ footer {
   }
 }
 
+/* Para ocultar el menú hamburguesa en pantallas grandes */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none; /* El menú hamburguesa se oculta en pantallas grandes */
+  }
+}
+
+/* Animación para el menú hamburguesa */
+@keyframes menuSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
 /* Evitar que la palabra se divida */
 #frase-split {
   white-space: nowrap; /* No permite el corte en palabras */
 }
 
+/* Modificación para móviles */
 @media (max-width: 600px) {
-  /* Modificación solo para móviles */
   #frase-split {
-    white-space: normal; /* Permite que se divida si es necesario */
-    word-wrap: break-word; /* La palabra se divide en caso de que sea necesario */
+    white-space: normal; /* Permite la división en móvil */
+    word-wrap: break-word; /* Asegura que el texto se divida si es necesario */
   }
 }
 
-/* Ajustes para que los botones no tapen el contenido en móviles */
+/* Estilos para la imagen de Instagram */
+.ig-preview {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.ig-preview img {
+  width: 100%; /* Hacemos que se ajuste bien al tamaño */
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra sutil para darle efecto */
+}
+
+.ig-preview p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.video-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.video-thumbnail {
+  width: 100%; /* Hacer la miniatura responsive */
+  max-width: 800px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Efecto sutil */
+}
+
+.video-container p {
+  font-size: 1.2em;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.team-cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap; /* Permite que las cartas se ajusten en varias filas */
+}
+
 @media (max-width: 600px) {
-  .navbar ul {
-    padding: 0; 
-    margin: 0;
-  }
-
-  .navbar ul li {
-    margin: 20px 0; /* Más espacio entre los botones */
-    font-size: 1.2em; /* Hacemos los botones más grandes */
+  .team-cards {
+    flex-direction: column; /* Cambia la dirección a columna en móviles */
+    gap: 10px; /* Reduce el espacio entre cartas en móviles */
+    align-items: center; /* Centra las cartas en móviles */
   }
 }
+
+.card {
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.5s;
+}
+
+.card-front {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.card-back {
+  background-color: #8a2be2;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transform: rotateY(180deg);
+}
+
+.card:hover .card-front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .card-back {
+  transform: rotateY(0deg);
+}
+
+
+
+
