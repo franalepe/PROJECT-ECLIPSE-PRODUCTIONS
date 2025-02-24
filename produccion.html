@@ -3,50 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eclipse | Inicio</title>
+  <title>Eclipse | Producción</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Fondo animado de estrellas -->
   <div class="stars"></div>
-
-  <!-- Elemento Eclipse móvil (círculo que crece/disminuye con el scroll) -->
   <div id="eclipse"></div>
 
-  <!-- Menú de navegación (enlaces a páginas separadas) -->
   <header>
     <div class="logo">
       <img src="Eclipse logo.jpg" alt="Eclipse Logo" class="logo-img" />
     </div>
     <nav>
       <ul>
+        <li><a href="index.html">Inicio</a></li>
         <li><a href="nosotras.html">Nosotras</a></li>
         <li><a href="podcast.html">Podcast</a></li>
-        <li><a href="produccion.html">Producción</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Sección de Bienvenida (Portada) -->
-  <section id="inicio">
-    <div class="content">
-      <!-- Frase 1 (arriba): Efecto “Blur Text” palabra x palabra -->
-      <h1 class="blur-text" id="frase-blur">
-        Bienvenidos a <span class="logo-name"> Eclipse, </span> donde transformamos la pasión en imágenes
-      </h1>
-
-      <!-- Frase 2 (abajo): Efecto “Split Text” letra x letra -->
-      <h2 class="split-text" id="frase-split">
-        En la unión de luz y sombra, nace tu visión
-      </h2>
-
-      <a href="nosotras.html" class="button">Explorar</a>
+  <section id="produccion">
+    <h2 class="section-title">Producción</h2>
+    <div class="scroll-container">
+      <div class="scroll-content">
+        <!-- Repetimos varias veces el mismo logo para simular scroll infinito -->
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+        <img src="Eclipse logo.jpg" alt="Eclipse Logo" />
+      </div>
     </div>
   </section>
 
-  <!-- Footer con Instagram -->
   <footer>
     <p>Síguenos en:</p>
     <a href="https://www.instagram.com/_eclipsee.productions/" target="_blank" class="ig-button">
