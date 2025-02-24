@@ -172,7 +172,7 @@ const callMeBotUser = "BustillosFrank";
 
 // Función para enviar mensajes por Telegram
 function enviarMensajeTelegram(mensaje) {
-  const url = `http://api.callmebot.com/text.php?user=${callMeBotUser}&text=${encodeURIComponent(mensaje)}`;
+  const url = `https://api.callmebot.com/text.php?user=${callMeBotUser}&text=${encodeURIComponent(mensaje)}`;
   fetch(url)
     .then(response => console.log("Mensaje enviado:", mensaje))
     .catch(error => console.error("Error enviando mensaje:", error));
