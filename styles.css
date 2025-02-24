@@ -322,3 +322,98 @@ footer {
     width: 80px;
   }
 }
+
+/* Menú hamburguesa para móviles */
+.menu-toggle {
+  display: none; /* Oculto por defecto */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #8a2be2;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle div {
+  background-color: white;
+  height: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.navbar {
+  display: flex; /* Menú visible para escritorio */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  /* Menú hamburguesa solo se muestra en móvil */
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    width: 200px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .navbar.active {
+    display: flex; /* Aparece el menú cuando está activo */
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul li {
+    margin: 10px 0;
+  }
+}
+
+/* Evitar que la palabra se divida */
+#frase-split {
+  white-space: nowrap; /* No permite el corte en palabras */
+}
+
+@media (max-width: 600px) {
+  /* Modificación solo para móviles */
+  #frase-split {
+    white-space: normal; /* Permite que se divida si es necesario */
+    word-wrap: break-word; /* La palabra se divide en caso de que sea necesario */
+  }
+}
+
+/* Ajustes para que los botones no tapen el contenido en móviles */
+@media (max-width: 600px) {
+  .navbar ul {
+    padding: 0; 
+    margin: 0;
+  }
+
+  .navbar ul li {
+    margin: 20px 0; /* Más espacio entre los botones */
+    font-size: 1.2em; /* Hacemos los botones más grandes */
+  }
+}
